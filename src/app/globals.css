@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --item-default-width: 280px;
+  --item-default-height: 440px;
+
+  --font-stretch-normal: normal;
+  --font-size-paragraph-l: 12px;
+  --letter-spacing-paragraph-l: 0.4px;
+  --font-stretch-body-xs: var(--font-stretch-normal);
+  --font-weight-light: 300;
+  --color-basic-black: #000;
+  --font-family-main: "Neue-Helvetica", "Helvetica", "Arial", "sans-serif";
+  --font-family-origins: "XXemeEtageRegular", "Neue-Helvetica", "Arial",
+    Sans-Serif;
+  --white-rgb: 255, 255, 255;
+
+  --side-bar-width: 460px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
+
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(
+      #ffffff80,
+      #ffffff40,
+      #ffffff30,
+      #ffffff20,
+      #ffffff10,
+      #ffffff10,
+      #ffffff80
+    );
+
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  -webkit-user-select: none; /*запрещает выделение текста для Chrome, Safari и Opera*/
+  -moz-user-select: none; /*запрещает выделение текста для Firefox*/
+  -ms-user-select: none; /*запрещает выделение текста для Internet Explorer/Edge*/
+  user-select: none; /*запрещает выделение текста для большинства браузеров*/
+  /* max-width: 100vw; */
+  width: 100%;
+  overflow-x: hidden;
+  background: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    color-scheme: light;
+  }
+}
