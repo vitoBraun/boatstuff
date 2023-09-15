@@ -3,6 +3,9 @@ import React from "react";
 import Image from "next/image";
 import { makeImageUrl } from "@/app/common/utils";
 export default function Catalog({ products }: { products: Product[] }) {
+  if (!products.length) {
+    return <div>NO ITEMS TO DISPLAY</div>;
+  }
   return (
     <div className="bw-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
