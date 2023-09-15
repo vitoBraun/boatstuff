@@ -2,11 +2,11 @@ import React from "react";
 import { useFetch } from "../../SSRHooks/useFetch";
 import Link from "next/link";
 import Image from "next/image";
-import { TCategory, StrapiApiResponse } from "@/app/types/types";
+import { TCategory, StrapiResponse } from "@/app/types/types";
 import { Category } from "./Category";
 
 export default async function Header() {
-  const { data: categories }: StrapiApiResponse<TCategory> = await useFetch(
+  const { data: categories }: StrapiResponse<TCategory> = await useFetch(
     "categories?populate[0]=subcategories"
   );
 
@@ -32,7 +32,7 @@ export default async function Header() {
           {categories.map((category) => (
             <Category
               title={category.attributes.title}
-              id={category.id}
+              categoryId={category.id}
               subcategories={category.attributes.subcategories.data}
             />
           ))}

@@ -25,6 +25,8 @@ export type Product = {
   attributes: {
     title: string;
     description: string;
+    shortDescription: string;
+    isAvailable: boolean;
     isNew: boolean;
     type: string;
     categories?: { data: TCategory[] };
@@ -34,7 +36,7 @@ export type Product = {
   };
 };
 
-export interface StrapiApiResponse<T> {
+export interface StrapiResponse<T> {
   data: T[];
 }
 

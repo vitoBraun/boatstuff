@@ -11,11 +11,11 @@ function assertIsNode(e: EventTarget | null): asserts e is Node {
 
 export function Category({
   title,
-  id,
+  categoryId,
   subcategories,
 }: {
   title: string;
-  id: number;
+  categoryId: number;
   subcategories: SubCategory[];
 }) {
   const [isCatOpen, setIsCatOpen] = useState(false);
@@ -67,7 +67,7 @@ export function Category({
                 <div className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
                   <div>
                     <a
-                      href={`/subcategories/${sub_cat.id}`}
+                      href={`/category/${categoryId}/${sub_cat.id}`}
                       className="font-semibold text-gray-900"
                     >
                       {sub_cat.attributes.title}
