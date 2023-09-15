@@ -5,7 +5,7 @@ import Catalog from "./components/Catalog/Catalog";
 
 export default async function Home() {
   const { data: products }: StrapiResponse<Product> = await useFetch(
-    `products?populate=*&filters[isNew][$eq]=true`
+    `products?populate=*`
   );
   return <Catalog products={products} />;
 }
