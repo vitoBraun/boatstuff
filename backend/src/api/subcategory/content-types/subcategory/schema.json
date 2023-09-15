@@ -32,14 +32,14 @@
       "target": "api::product.product",
       "mappedBy": "subcategories"
     },
+    "description": {
+      "type": "string"
+    },
     "categories": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
-      "inversedBy": "sub_categories"
-    },
-    "description": {
-      "type": "string"
+      "mappedBy": "subcategories"
     }
   }
 }

@@ -33,14 +33,15 @@
       "type": "text"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -53,11 +54,11 @@
       "target": "api::product.product",
       "mappedBy": "categories"
     },
-    "sub_categories": {
+    "subcategories": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::subcategory.subcategory",
-      "mappedBy": "categories"
+      "inversedBy": "categories"
     }
   }
 }
