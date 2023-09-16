@@ -4,6 +4,10 @@ import Image from "next/image";
 import { DropdownMenu } from "./DropdownMenu";
 
 export default async function Header() {
+  const information = [
+    { name: "Contacts", href: "/contacts" },
+    { name: "Other Info", href: "/info" },
+  ];
   return (
     <header className="bg-white">
       <nav
@@ -25,12 +29,18 @@ export default async function Header() {
         <div className="lg:flex lg:gap-x-12">
           <DropdownMenu title={"Info"}>
             <ul>
-              <li>Hey</li>
+              {information.map((info) => (
+                <li>
+                  <span>
+                    <Link href={info.href}>{info.name}</Link>
+                  </span>
+                </li>
+              ))}
             </ul>
           </DropdownMenu>
 
           <span>
-            <a href="tel:+66858504142">+66858504142</a>
+            <Link href="tel:+66858504142">+66858504142</Link>
           </span>
         </div>
       </nav>
