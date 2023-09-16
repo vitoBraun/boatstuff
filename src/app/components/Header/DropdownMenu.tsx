@@ -1,6 +1,4 @@
 "use client";
-
-import { SubCategory } from "@/app/types/types";
 import { useEffect, useRef, useState } from "react";
 
 function assertIsNode(e: EventTarget | null): asserts e is Node {

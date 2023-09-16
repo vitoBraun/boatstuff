@@ -1,35 +1,20 @@
-import { useFetch } from "@/app/SSRHooks/useFetch";
-import { Product, StrapiResponse, TCategory } from "@/app/types/types";
+"use client";
+import { Product, TCategory } from "@/app/types/types";
 import React from "react";
 import Items from "./Items";
+import { Filter } from "./Filter";
+import Link from "next/link";
+import { scrollToFn } from "@/app/common/utils";
+import { useRouter } from "next/navigation";
 
-function Filter({ categories }: { categories: TCategory[] }) {
-  return (
-    <ul role="list" className="px-2 py-3 font-medium text-gray-900">
-      {categories.map((category) => (
-        <li>
-          <a href={`/category/${category.id}`} className="block px-2 py-3">
-            {category.attributes.title}
-          </a>
-          <ul>
-            {category.attributes.subcategories.data.map((subcat) => (
-              <li>
-                <a href={`/category/${category.id}/${subcat.id}`}>
-                  {subcat.attributes.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-export default async function Catalog({ products }: { products: Product[] }) {
-  const { data: categories }: StrapiResponse<TCategory> = await useFetch(
-    "categories?populate[0]=subcategories"
-  );
+export default function Catalog({
+  products,
+  categories,
+}: {
+  products: Product[];
+  categories: TCategory[];
+}) {
+  const router = useRouter();
   return (
     <div className="bg-white">
       <div>
@@ -53,13 +38,13 @@ export default async function Catalog({ products }: { products: Product[] }) {
                     className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="currentColor"
                     aria-hidden="true"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
@@ -71,21 +56,27 @@ export default async function Catalog({ products }: { products: Product[] }) {
         </div>
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              New Arrivals
-            </h1>
-
+          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 ">
             <div className="flex items-center"></div>
           </div>
           <div className="flex">
             <section
               aria-labelledby="products-heading"
-              className="pb-24 pt-6 hidden lg:block"
+              className="pb-24 pt-6 hidden lg:block w-1/4 fixed left-1/8 top-100"
             >
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+                <button
+                  onClick={() => {
+                    scrollToFn(0, () => router.push(`/`));
+                  }}
+                >
+                  Catalogue
+                </button>
+              </h1>
               <Filter categories={categories} />
             </section>
-            <section className="pb-24 pt-6 w-full">
+            <section className="pb-24 pt-6 w-full flex">
+              <div className="w-1/4 h-full hidden lg:block "></div>
               <Items products={products} />
             </section>
           </div>

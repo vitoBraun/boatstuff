@@ -1,4 +1,4 @@
-import { Product, StrapiResponse } from "@/app/types/types";
+import { Product } from "@/app/types/types";
 import React from "react";
 import Image from "next/image";
 import { makeImageUrl } from "@/app/common/utils";
@@ -13,7 +13,11 @@ export default function Items({ products }: { products: Product[] }) {
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {products.map((product) => (
-            <a href={`/product/${product.id}`} className="group">
+            <a
+              key={product.id}
+              href={`/product/${product.id}`}
+              className="group"
+            >
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                 <Image
                   src={makeImageUrl(

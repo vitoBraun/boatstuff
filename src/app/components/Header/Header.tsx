@@ -1,15 +1,9 @@
 import React from "react";
-import { useFetch } from "../../SSRHooks/useFetch";
 import Link from "next/link";
 import Image from "next/image";
-import { TCategory, StrapiResponse } from "@/app/types/types";
 import { DropdownMenu } from "./DropdownMenu";
 
 export default async function Header() {
-  const { data: categories }: StrapiResponse<TCategory> = await useFetch(
-    "categories?populate[0]=subcategories"
-  );
-
   return (
     <header className="bg-white">
       <nav
@@ -36,7 +30,7 @@ export default async function Header() {
           </DropdownMenu>
 
           <span>
-            <a href="tel:89637657788">8-963-765-77-88</a>
+            <a href="tel:+66858504142">+66858504142</a>
           </span>
         </div>
       </nav>
