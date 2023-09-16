@@ -1,8 +1,5 @@
 export function makeImageUrl(imgUrl: string) {
-  if (process.env.NODE_ENV === "development") {
-    return `${process.env.NEXT_PUBLIC_STRAPI_URL}${imgUrl}`;
-  }
-  return `${imgUrl}`;
+  return `${process.env.NEXT_PUBLIC_STRAPI_URL}${imgUrl}`;
 }
 
 export function toPrice(price: number) {
