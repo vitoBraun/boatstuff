@@ -3,7 +3,7 @@ import { useFetch } from "../../SSRHooks/useFetch";
 import Link from "next/link";
 import Image from "next/image";
 import { TCategory, StrapiResponse } from "@/app/types/types";
-import { Category } from "./Category";
+import { DropdownMenu } from "./DropdownMenu";
 
 export default async function Header() {
   const { data: categories }: StrapiResponse<TCategory> = await useFetch(
@@ -29,13 +29,15 @@ export default async function Header() {
         </div>
 
         <div className="lg:flex lg:gap-x-12">
-          {categories.map((category) => (
-            <Category
-              title={category.attributes.title}
-              categoryId={category.id}
-              subcategories={category.attributes.subcategories.data}
-            />
-          ))}
+          <DropdownMenu title={"Info"}>
+            <ul>
+              <li>Hey</li>
+            </ul>
+          </DropdownMenu>
+
+          <span>
+            <a href="tel:89637657788">8-963-765-77-88</a>
+          </span>
         </div>
       </nav>
     </header>
