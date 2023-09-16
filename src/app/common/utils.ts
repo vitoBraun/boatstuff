@@ -1,5 +1,8 @@
 export function makeImageUrl(imgUrl: string) {
-  return `${process.env.STRAPI_URL || "http://localhost:1337"}${imgUrl}`;
+  if (process.env.NODE_ENV === "development") {
+    return `${process.env.NEXT_PUBLIC_STRAPI_URL}${imgUrl}`;
+  }
+  return `${imgUrl}`;
 }
 
 export function toPrice(price: number) {

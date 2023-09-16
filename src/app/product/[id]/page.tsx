@@ -3,6 +3,7 @@ import Image from "next/image";
 import { makeImageUrl, toPrice } from "@/app/common/utils";
 import { Product, StrapiResponse } from "@/app/types/types";
 import { useFetch } from "@/app/SSRHooks/useFetch";
+import Link from "next/link";
 export default async function Page({ params }: { params: { id: string } }) {
   function getFiltersString(params: { id: string }) {
     return `products?populate=*&filters[id][$eq]=${params.id}`;
@@ -36,11 +37,13 @@ export default async function Page({ params }: { params: { id: string } }) {
               />
             </div>
             <div className="flex justify-center -mx-2 mb-4">
-              <div className="w-1/2 px-2">
-                <button className="w-full bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800">
-                  Order
-                </button>
-              </div>
+              <Link
+                href="https://t.me/+66858504142"
+                target="_blank"
+                className="bg-gray-900 text-white py-2 px-10 rounded-full font-bold hover:bg-gray-500"
+              >
+                BUY
+              </Link>
             </div>
           </div>
           <div className="md:flex-1 px-4">
