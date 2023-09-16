@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Filter } from "./Catalog/Filter";
 import { TCategory } from "../types/types";
 import RouterButton from "./RouterButton";
+import useOutsideClick from "./Header/useOutsideClick";
 
 export default function SideMenuMobile({
   categories,
@@ -9,17 +10,26 @@ export default function SideMenuMobile({
   categories: TCategory[];
 }) {
   const [isMenuVisible, setIsMenuVisible] = useState(true);
+  const sideMenuRef = useRef<HTMLDivElement>(null);
 
+  const toggleOpen = () => {
+    setIsMenuVisible((prev) => !prev);
+  };
+
+  //   useOutsideClick({
+  //     targetComponentRef: sideMenuRef,
+  //     callBackFn: setIsMenuVisible,
+  //   });
   const sideMenuConditionStyle = `relative z-40 lg:hidden transition-2 duration-300 ease-in-out ${
     !isMenuVisible && "opacity-0 pointer-events-none"
   }`;
   return (
     <>
-      <div className={`fixed top-0 right-0 mr-5 mt-5 z-50 lg:hidden`}>
+      <div
+        className={`fixed top-0 right-0 mr-5 mt-5 z-50 lg:hidden mx-auto my-auto`}
+      >
         <button
-          onClick={() => {
-            setIsMenuVisible((prev) => !prev);
-          }}
+          onClick={toggleOpen}
           type="button"
           className={`w-8 h-8 flex justify-around flex-col flex-wrap z-10 cursor-pointer`}
         >
@@ -43,7 +53,11 @@ export default function SideMenuMobile({
         </button>
       </div>
 
-      <div className={sideMenuConditionStyle} aria-modal="true">
+      <div
+        className={sideMenuConditionStyle}
+        aria-modal="true"
+        ref={sideMenuRef}
+      >
         <div className="fixed inset-0 bg-black bg-opacity-25"></div>
 
         <div className="fixed inset-0 z-40 flex">

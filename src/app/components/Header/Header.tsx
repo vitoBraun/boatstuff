@@ -10,14 +10,11 @@ export default async function Header() {
   ];
   return (
     <header className="bg-white">
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
-        aria-label="Global"
-      >
+      <nav className="mx-auto flex max-w-7xl items-center lg:px-8 p-8">
         <div className="flex lg:flex-1">
           <Link href="/">
             <Image
-              className="h-8 w-auto"
+              className="h-20 w-auto"
               src="/images/logo2.png"
               alt="Logo"
               width={300}
@@ -26,22 +23,22 @@ export default async function Header() {
           </Link>
         </div>
 
-        <div className="lg:flex lg:gap-x-12">
+        <div className="lg:flex lg:gap-x-12 ">
           <DropdownMenu title={"Info"}>
             <ul>
               {information.map((info) => (
                 <li>
-                  <span>
-                    <Link href={info.href}>{info.name}</Link>
-                  </span>
+                  <Link href={info.href}>{info.name}</Link>
                 </li>
               ))}
             </ul>
           </DropdownMenu>
 
-          <span>
-            <Link href="tel:+66858504142">+66858504142</Link>
-          </span>
+          <Link href="/someinf">Some info</Link>
+
+          <Link href="tel:+66858504142" className="text-xl">
+            +66858504142
+          </Link>
         </div>
       </nav>
     </header>
