@@ -3,6 +3,7 @@ import { Filter } from "./Catalog/Filter";
 import { TCategory } from "../types/types";
 import RouterButton from "./RouterButton";
 import useOutsideClick from "./Header/useOutsideClick";
+import NavLinks from "./Header/NavLinks";
 
 export default function SideMenuMobile({
   categories,

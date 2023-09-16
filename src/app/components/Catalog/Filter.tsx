@@ -1,11 +1,10 @@
 import { TCategory } from "@/app/types/types";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import RouterButton from "../RouterButton";
 
 export function Filter({ categories }: { categories: TCategory[] }) {
   const { slug } = useParams();
 
-  const router = useRouter();
   return (
     <ul role="list" className="px-2 py-3 font-medium text-gray-900">
       {categories.map((category) => (

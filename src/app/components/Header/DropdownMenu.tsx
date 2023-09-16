@@ -14,7 +14,7 @@ export function DropdownMenu({
 
   useOutsideClick({
     targetComponentRef: componentRef,
-    callBackFn: setIsCatOpen,
+    setVisibleCB: setIsCatOpen,
   });
   return (
     <div className="relative" ref={componentRef}>

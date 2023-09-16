@@ -3,10 +3,10 @@ import React, { RefObject, useEffect } from "react";
 
 export default function useOutsideClick({
   targetComponentRef,
-  callBackFn,
+  setVisibleCB,
 }: {
   targetComponentRef: RefObject<HTMLDivElement>;
-  callBackFn: (prop: boolean) => void;
+  setVisibleCB: (prop: boolean) => void;
 }) {
   useEffect(() => {
     const handleClickOutside = ({ target }: MouseEvent) => {
@@ -15,7 +15,7 @@ export default function useOutsideClick({
         targetComponentRef.current &&
         !targetComponentRef.current.contains(target)
       ) {
-        callBackFn(false);
+        setVisibleCB(false);
       }
     };
 
