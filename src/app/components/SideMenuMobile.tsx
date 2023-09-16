@@ -10,8 +10,8 @@ export default function SideMenuMobile({
 }) {
   const [isMenuVisible, setIsMenuVisible] = useState(true);
 
-  const conditionedStyle = `relative z-40 lg:hidden transition-2 duration-300 ease-in-out ${
-    !isMenuVisible && "opacity-0"
+  const sideMenuConditionStyle = `relative z-40 lg:hidden transition-2 duration-300 ease-in-out ${
+    !isMenuVisible && "opacity-0 pointer-events-none"
   }`;
   return (
     <>
@@ -43,7 +43,7 @@ export default function SideMenuMobile({
         </button>
       </div>
 
-      <div className={conditionedStyle} aria-modal="true">
+      <div className={sideMenuConditionStyle} aria-modal="true">
         <div className="fixed inset-0 bg-black bg-opacity-25"></div>
 
         <div className="fixed inset-0 z-40 flex">

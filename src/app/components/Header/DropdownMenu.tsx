@@ -1,11 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-
-function assertIsNode(e: EventTarget | null): asserts e is Node {
-  if (!e || !("nodeType" in e)) {
-    throw new Error(`Node expected`);
-  }
-}
+import { useRef, useState } from "react";
+import useOutsideClick from "./useOutsideClick";
 
 export function DropdownMenu({
   title,
@@ -17,20 +12,10 @@ export function DropdownMenu({
   const [isCatOpen, setIsCatOpen] = useState(false);
   const componentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleClickOutside = ({ target }: MouseEvent) => {
-      assertIsNode(target);
-      if (componentRef.current && !componentRef.current.contains(target)) {
-        setIsCatOpen(false);
-      }
-    };
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+  useOutsideClick({
+    targetComponentRef: componentRef,
+    callBackFn: setIsCatOpen,
+  });
   return (
     <div className="relative" ref={componentRef}>
       <button

@@ -13,7 +13,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   );
   return (
     <>
-      <Catalog products={products} categories={categories}/>
+      <Catalog products={products} categories={categories} />
     </>
   );
 }
