@@ -7,7 +7,7 @@ export function convertStringToArray(string: string): string[] {
 
 export function makeImageUrl(imgUrlsString: string | undefined) {
   const url = convertStringToArray(imgUrlsString || "")[0];
-  return `${process.env.NEXT_PUBLIC_BACKEND_URL}${url}`;
+  return `${process.env.NEXT_PUBLIC_API_URL}${url}`;
 }
 
 export function toPrice(price: number) {
