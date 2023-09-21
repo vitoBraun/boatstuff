@@ -5,9 +5,9 @@ export function convertStringToArray(string: string): string[] {
   return string?.split(",");
 }
 
-export function makeImageUrl(imgUrlsString: string | undefined) {
+export function makeImageUrl(imgUrlsString: string) {
   const url = convertStringToArray(imgUrlsString || "")[0];
-  return `${process.env.NEXT_PUBLIC_API_URL}${url}`;
+  return `${process.env.NEXT_PUBLIC_BACKEND_URL}${url}`;
 }
 
 export function toPrice(price: number) {

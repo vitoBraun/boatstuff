@@ -2,10 +2,6 @@
 import { Product, TCategory } from "@/app/types/types";
 import React from "react";
 import Items from "./Items";
-import { Filter } from "./Filter";
-import { scrollToFn } from "@/app/common/utils";
-import { useRouter } from "next/navigation";
-import RouterButton from "../RouterButton";
 import SideMenuDesktop from "../SideMenuDesktop";
 import SideMenuMobile from "../SideMenuMobile";
 

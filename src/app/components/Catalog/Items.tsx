@@ -20,9 +20,9 @@ export default function Items({ products }: { products: Product[] }) {
             >
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                 <Image
-                  src={makeImageUrl(
+                  src={product.images ? makeImageUrl(
                     product.images
-                  )}
+                  ) : ""}
                   alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
                   className="w-full object-cover object-center group-hover:opacity-75 max-h-100"
                   width={

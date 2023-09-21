@@ -2,7 +2,7 @@
 const nextConfig = {
   images: {
     reactStrictMode: false,
-    domains: ["localhost"],
+    domains: ["localhost", "https://boatstuff.pro"],
   },
 };
 

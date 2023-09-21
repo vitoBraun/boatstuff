@@ -16,9 +16,9 @@ export default async function Page({ params }: { params: { id: string } }) {
           <div className="md:flex-1 px-4">
             <div className="h-[460px] rounded-lg bg-gray-300 mb-4">
               <Image
-                src={makeImageUrl(
+                src={product.images ? makeImageUrl(
                   product.images
-                )}
+                ) : ''}
                 alt={product.title}
                 className="w-full h-full object-cover"
                 width={

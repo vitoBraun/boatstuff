@@ -1,7 +1,7 @@
 export const useFetch = (route: string) => {
-  const res = fetch(`${process.env.NEXT_PUBLIC_API_URL}/api${route}`).then(
-    (data) => data.json()
-  );
+  const url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/${route}`;
+  console.log(url);
+  const res = fetch(url).then((data) => data.json());
 
   return res;
 };
