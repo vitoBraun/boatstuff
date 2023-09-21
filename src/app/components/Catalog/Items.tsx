@@ -21,26 +21,23 @@ export default function Items({ products }: { products: Product[] }) {
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                 <Image
                   src={makeImageUrl(
-                    product.attributes.image!.data[0].attributes.formats.medium
-                      .url
+                    product.images
                   )}
                   alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
                   className="w-full object-cover object-center group-hover:opacity-75 max-h-100"
                   width={
-                    product.attributes.image?.data[0].attributes.formats.medium
-                      .width
+                    400
                   }
                   height={
-                    product.attributes.image?.data[0].attributes.formats.medium
-                      .height
+                    500
                   }
                 />
               </div>
               <h3 className="mt-4 text-sm text-gray-700">
-                {product.attributes.title}
+                {product.title}
               </h3>
               <p className="mt-1 text-lg font-medium text-gray-900">
-                {product.attributes.price?.toLocaleString("th-TH", {
+                {product.price?.toLocaleString("th-TH", {
                   style: "currency",
                   currency: "THB",
                 })}

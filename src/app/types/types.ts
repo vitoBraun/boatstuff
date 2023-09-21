@@ -22,18 +22,16 @@ export type Image = {
 
 export type Product = {
   id: number;
-  attributes: {
-    title: string;
-    description: string;
-    shortDescription: string;
-    isAvailable: boolean;
-    isNew: boolean;
-    type: string;
-    categories?: { data: TCategory[] };
-    subcategories?: { data: SubCategory[] };
-    price?: number;
-    image?: { data: Image[] };
-  };
+  title: string;
+  description: string;
+  shortDescription: string;
+  isAvailable: boolean;
+  isNew: boolean;
+  type: string;
+  categories?: { data: TCategory[] };
+  subcategories?: { data: SubCategory[] };
+  price?: number;
+  images?: string;
 };
 
 export interface StrapiResponse<T> {
@@ -42,14 +40,13 @@ export interface StrapiResponse<T> {
 
 export type SubCategory = {
   id: number;
-  attributes: { title: string; description: string };
+  title: string;
+  description: string;
 };
 
 export type TCategory = {
   id: number;
-  attributes: {
-    title: string;
-    description: string;
-    subcategories: { data: SubCategory[] };
-  };
+  title: string;
+  description: string;
+  subcategories: SubCategory[];
 };

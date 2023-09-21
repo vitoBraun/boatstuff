@@ -1,18 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import { makeImageUrl, toPrice } from "@/app/common/utils";
-import { Product, StrapiResponse } from "@/app/types/types";
+import { Product } from "@/app/types/types";
 import { useFetch } from "@/app/SSRHooks/useFetch";
 import Link from "next/link";
 export default async function Page({ params }: { params: { id: string } }) {
-  function getFiltersString(params: { id: string }) {
-    return `products?populate=*&filters[id][$eq]=${params.id}`;
-  }
-
-  const { data }: StrapiResponse<Product> = await useFetch(
-    getFiltersString(params)
+  const product: Product = await useFetch(
+    `product/${params.id}`
   );
-  const product = data[0];
+
   return (
     <div className="bg-gray-100 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,24 +17,21 @@ export default async function Page({ params }: { params: { id: string } }) {
             <div className="h-[460px] rounded-lg bg-gray-300 mb-4">
               <Image
                 src={makeImageUrl(
-                  product.attributes.image!.data[0].attributes.formats.medium
-                    .url
+                  product.images
                 )}
-                alt={product.attributes.title}
+                alt={product.title}
                 className="w-full h-full object-cover"
                 width={
-                  product.attributes.image?.data[0].attributes.formats.medium
-                    .width
+                  400
                 }
                 height={
-                  product.attributes.image?.data[0].attributes.formats.medium
-                    .height
+                  500
                 }
               />
             </div>
             <div className="flex justify-center -mx-2 mb-4">
               <Link
-                href="https://t.me/+66858504142"
+                href="https://wa.me/+66858504142"
                 target="_blank"
                 className="bg-gray-900 text-white py-2 px-10 rounded-full font-bold hover:bg-gray-500"
               >
@@ -48,23 +41,23 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
           <div className="md:flex-1 px-4">
             <h2 className="text-2xl font-bold mb-2">
-              {product.attributes.title}
+              {product.title}
             </h2>
             <p className="text-gray-600 text-sm mb-4">
-              {product.attributes.shortDescription}
+              {product.shortDescription}
             </p>
             <div className="flex mb-4">
               <div className="mr-4">
                 <span className="font-bold text-gray-700">Price:</span>
                 <span className="text-gray-600">
-                  {toPrice(product.attributes.price ?? 0)}
+                  {toPrice(product.price ?? 0)}
                 </span>
               </div>
               <div>
                 <span className="font-bold text-gray-700">Availability:</span>
                 <span className="text-gray-600">
                   {" "}
-                  {product.attributes.isAvailable ? "InStock" : "Out of stock"}
+                  {product.isAvailable ? "InStock" : "Out of stock"}
                 </span>
               </div>
             </div>
@@ -74,7 +67,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 Product Description:
               </span>
               <p className="text-gray-600 text-sm mt-2">
-                {product.attributes.description}
+                {product.description}
               </p>
             </div>
           </div>

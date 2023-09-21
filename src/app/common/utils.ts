@@ -1,5 +1,13 @@
-export function makeImageUrl(imgUrl: string) {
-  return `${process.env.NEXT_PUBLIC_STRAPI_URL}${imgUrl}`;
+export function convertStringToArray(string: string): string[] {
+  if (string === "") {
+    return []; // Return an empty array
+  }
+  return string?.split(",");
+}
+
+export function makeImageUrl(imgUrlsString: string | undefined) {
+  const url = convertStringToArray(imgUrlsString || "")[0];
+  return `${process.env.NEXT_PUBLIC_BACKEND_URL}${url}`;
 }
 
 export function toPrice(price: number) {
@@ -10,10 +18,14 @@ export function toPrice(price: number) {
 }
 
 export function getFiltersString(params: { slug: string[] }) {
+  const url = "product/list?";
+  const categorySlug = `categoryId=${params.slug[0]}`;
+  const subcategorySlug = `subcategoryId=${params.slug[1]}`;
+
   if (params.slug[1]) {
-    return `products?populate=*&filters[categories][id][$eq]=${params.slug[0]}&filters[subcategories][id][$eq]=${params.slug[1]}`;
+    return `${url}${categorySlug}&${subcategorySlug}`;
   }
-  return `products?populate=*&filters[categories][id][$eq]=${params.slug[0]}`;
+  return `${url}${categorySlug}`;
 }
 
 export function scrollToFn(offset: number, callback: () => void) {

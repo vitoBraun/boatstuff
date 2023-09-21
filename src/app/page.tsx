@@ -1,15 +1,16 @@
 import React from "react";
-import { Product, StrapiResponse, TCategory } from "./types/types";
+import { Product, TCategory } from "./types/types";
 import { useFetch } from "./SSRHooks/useFetch";
 
 import Catalog from "./components/Catalog/Catalog";
 
 export default async function Home() {
-  const { data: products }: StrapiResponse<Product> = await useFetch(
-    `products?populate=*`
+  const products: Product[] = await useFetch(
+    "product/list"
   );
-  const { data: categories }: StrapiResponse<TCategory> = await useFetch(
-    "categories?populate[0]=subcategories"
+  const categories: TCategory[] = await useFetch(
+    "category/list"
   );
+
   return <Catalog products={products} categories={categories} />;
 }

@@ -11,21 +11,19 @@ export function Filter({ categories }: { categories: TCategory[] }) {
         <li key={category.id}>
           <RouterButton
             path={`/category/${category.id}`}
-            title={category.attributes.title}
-            className={`block px-2 py-3 ${
-              slug && category.id === Number(slug[0]) && "font-bold"
-            }`}
+            title={category.title}
+            className={`block px-2 py-3 ${slug && category.id === Number(slug[0]) && "font-bold"
+              }`}
           />
 
           <ul className="pl-4 text-sm">
-            {category.attributes.subcategories.data.map((subcat) => (
+            {category.subcategories.map((subcat) => (
               <li key={subcat.id}>
                 <RouterButton
                   path={`/category/${category.id}/${subcat.id}`}
-                  title={subcat.attributes.title}
-                  className={`block px-2 py-3 ${
-                    slug && subcat.id === Number(slug[1]) && "font-bold"
-                  }`}
+                  title={subcat.title}
+                  className={`block px-2 py-3 ${slug && subcat.id === Number(slug[1]) && "font-bold"
+                    }`}
                 />
               </li>
             ))}
