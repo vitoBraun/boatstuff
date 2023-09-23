@@ -30,8 +30,5 @@ jobs:
             port: ${{ secrets.SSH_PORT }}
             key: ${{ secrets.SSH_KEY }}
             script: |
-              cd /home/${{ secrets.SSH_USERNAME }}/deploy/boatstuff.pro/frontend/ &&
-              npm install && 
-              npm run build &&
-              pm2 restart frontend
+              cd /home/${{ secrets.SSH_USERNAME }}/deploy/boatstuff.pro/frontend/ && npm install && npm run build && pm2 restart frontend
   
