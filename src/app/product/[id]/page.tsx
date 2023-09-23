@@ -1,9 +1,10 @@
 import React from "react";
-import Image from "next/image";
-import { makeImageUrlArray, toPrice } from "@/app/common/utils";
+
 import { Product } from "@/app/types/types";
 import { useFetch } from "@/app/SSRHooks/useFetch";
 import Link from "next/link";
+import ImageComp from "./image";
+import { toPrice } from "@/app/common/utils";
 export default async function Page({ params }: { params: { id: string } }) {
   const product: Product = await useFetch(
     `product/${params.id}`
@@ -14,21 +15,9 @@ export default async function Page({ params }: { params: { id: string } }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row -mx-4">
           <div className="md:flex-1 px-4">
-            <div className="h-[460px] rounded-lg bg-gray-300 mb-4">
-              <Image
-                src={product.images ? makeImageUrlArray(
-                  product.images
-                )[0] : ''}
-                alt={product.title}
-                className="w-full h-full object-cover"
-                width={
-                  400
-                }
-                height={
-                  500
-                }
-              />
-            </div>
+
+            <ImageComp images={product.images ? product.images : ''} />
+
             <div className="flex justify-center -mx-2 mb-4">
               <Link
                 href="https://wa.me/+66858504142"

@@ -1,13 +1,20 @@
 export function convertStringToArray(string: string): string[] {
   if (string === "") {
-    return []; // Return an empty array
+    return [];
   }
   return string?.split(",");
 }
 
 export function makeImageUrlArray(imgUrlsString: string): string[] {
   const urlsArray = convertStringToArray(imgUrlsString || "");
-  return urlsArray.map((url) => `${process.env.NEXT_PUBLIC_BACKEND_URL}${url}`);
+  return urlsArray.map(
+    (url) =>
+      `${
+        process.env.NODE_ENV === "production"
+          ? process.env.NEXT_PUBLIC_BACKEND_URL
+          : process.env.NEXT_PRIVATE_BACKEND_URL
+      }${url}`
+  );
 }
 
 export function toPrice(price: number) {
