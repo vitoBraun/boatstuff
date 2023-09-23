@@ -17,11 +17,11 @@ export default function Catalog({
       <div>
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-y border-gray-200 pb-6 ">
-            <div className="flex">
-              <SideMenuDesktop categories={categories} />
-              <SideMenuMobile categories={categories} />
-              <section className="pb-24 pt-6 w-full flex">
-                <div className="w-1/4 h-full hidden lg:block "></div>
+            <SideMenuDesktop categories={categories} />
+            <SideMenuMobile categories={categories} />
+            <div className="flex w-full justify-center">
+              <section className="pb-24 pt-6 flex  ">
+                <div className="w-1/4 h-full hidden lg:block  "></div>
                 <Items products={products} />
               </section>
             </div>

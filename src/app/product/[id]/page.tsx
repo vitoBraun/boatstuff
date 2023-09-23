@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { makeImageUrl, toPrice } from "@/app/common/utils";
+import { makeImageUrlArray, toPrice } from "@/app/common/utils";
 import { Product } from "@/app/types/types";
 import { useFetch } from "@/app/SSRHooks/useFetch";
 import Link from "next/link";
@@ -16,9 +16,9 @@ export default async function Page({ params }: { params: { id: string } }) {
           <div className="md:flex-1 px-4">
             <div className="h-[460px] rounded-lg bg-gray-300 mb-4">
               <Image
-                src={product.images ? makeImageUrl(
+                src={product.images ? makeImageUrlArray(
                   product.images
-                ) : ''}
+                )[0] : ''}
                 alt={product.title}
                 className="w-full h-full object-cover"
                 width={
