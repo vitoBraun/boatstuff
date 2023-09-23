@@ -66,7 +66,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               <span className="font-bold text-gray-700">
                 Product Description:
               </span>
-              <p className="text-gray-600 text-sm mt-2">
+              <p className="text-gray-600 text-sm mt-2 whitespace-pre-line">
                 {product.description}
               </p>
             </div>
